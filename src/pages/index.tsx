@@ -5,7 +5,7 @@ import { GetServerSideProps } from 'next'
 
 import CompletedChallenges from '../components/CompletedChallenges'
 import Countdown from '../components/Countdown'
-import { ExperienceBar } from '../components/ExperienceBar'
+import ExperienceBar from '../components/ExperienceBar'
 import ChallengeBox from '../components/ChallengeBox'
 import { Profile } from '../components/Profile'
 
@@ -64,11 +64,25 @@ const Home: React.FC = (props: HomeProps) => {
 export default Home
 
 export const getServerSideProps: GetServerSideProps = async ctx => {
-  const { level, currentExperience, challengesFromCookies } = ctx.req.cookies
+  const {
+    level,
+    experienceFromCookies,
+    challengesFromCookies
+  } = ctx.req.cookies
 
-  let challengesCompleted = ''
+  let challengesCompleted: string
+  let currentExperience: string
+
   if (challengesFromCookies == null || challengesFromCookies === '') {
     challengesCompleted = '0'
+  } else {
+    challengesCompleted = challengesFromCookies
+  }
+
+  if (experienceFromCookies == null || experienceFromCookies === '') {
+    currentExperience = '0'
+  } else {
+    currentExperience = experienceFromCookies
   }
 
   return {
