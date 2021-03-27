@@ -64,26 +64,7 @@ const Home: React.FC = (props: HomeProps) => {
 export default Home
 
 export const getServerSideProps: GetServerSideProps = async ctx => {
-  const {
-    level,
-    experienceFromCookies,
-    challengesFromCookies
-  } = ctx.req.cookies
-
-  let challengesCompleted: string
-  let currentExperience: string
-
-  if (challengesFromCookies == null || challengesFromCookies === '') {
-    challengesCompleted = '0'
-  } else {
-    challengesCompleted = challengesFromCookies
-  }
-
-  if (experienceFromCookies == null || experienceFromCookies === '') {
-    currentExperience = '0'
-  } else {
-    currentExperience = experienceFromCookies
-  }
+  const { level, currentExperience, challengesCompleted } = ctx.req.cookies
 
   return {
     props: {

@@ -27,10 +27,15 @@ const Text = styled.span`
 const CompletedChallenges: React.FC = () => {
   const { challengesCompleted } = useContext(ChallengesContext)
 
+  let parsedChallengesCount: number = challengesCompleted
+  if (typeof challengesCompleted !== 'number') {
+    parsedChallengesCount = 0
+  }
+
   return (
     <CompletedChallengesWrapper>
       <Text>Desafios completos</Text>
-      <Text>{challengesCompleted}</Text>
+      <Text>{parsedChallengesCount}</Text>
     </CompletedChallengesWrapper>
   )
 }
