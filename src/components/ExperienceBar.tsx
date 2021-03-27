@@ -1,28 +1,64 @@
 import React, { useContext } from 'react'
-import styles from '../styles/components/ExperienceBar.module.css'
+import styled from 'styled-components'
 import { ChallengesContext } from '../contexts/ChallengeContext'
+import { isNumber } from 'util'
 
-export function ExperienceBar() {
-  const { currentExperience, experienceToNextLevel } = useContext(
-    ChallengesContext
-  )
+const Bar = styled.header`
+  display: flex;
+  align-items: center;
+`
+
+const Text = styled.span`
+  font-size: 1rem;
+`
+
+const CurrentExperience = styled(Text)`
+  position: absolute;
+  top: 12px;
+  transform: translateX(-50%);
+`
+
+const UnfilledProgress = styled.div`
+  flex: 1;
+  height: 4px;
+  border-radius: 4px;
+  background: ${props => props.theme.colors.grayLine};
+  margin: 0 1.5rem;
+  position: relative;
+`
+
+const Progress = styled.div`
+  height: 4px;
+  border-radius: 4px;
+  background: ${props => props.theme.colors.green};
+`
+
+const ExperienceBar: React.FC = () => {
+  const {
+    currentExperience: unparsedExperience,
+    experienceToNextLevel
+  } = useContext(ChallengesContext)
+
+  let currentExperience = unparsedExperience
+  if (typeof currentExperience !== 'number') {
+    currentExperience = 0
+  }
 
   const percentToNextLevel =
     Math.round(currentExperience * 100) / experienceToNextLevel
 
   return (
-    <header className={styles.experienceBar}>
-      <span>0 xp</span>
-      <div>
-        <div style={{ width: `${percentToNextLevel}%` }} />
-        <span
-          className={styles.currentExperience}
-          style={{ left: `${percentToNextLevel}%` }}
-        >
+    <Bar>
+      <Text>0 xp</Text>
+      <UnfilledProgress>
+        <Progress style={{ width: `${percentToNextLevel}%` }} />
+        <CurrentExperience style={{ left: `${percentToNextLevel}%` }}>
           {currentExperience} xp
-        </span>
-      </div>
-      <span>{experienceToNextLevel} xp</span>
-    </header>
+        </CurrentExperience>
+      </UnfilledProgress>
+      <Text>{experienceToNextLevel} xp</Text>
+    </Bar>
   )
 }
+
+export default ExperienceBar
