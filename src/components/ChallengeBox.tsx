@@ -6,7 +6,7 @@ import { CountdownContext } from '../contexts/CountdownContext'
 const ChallengeWrapper = styled.div`
   height: 100%;
 
-  background: var(--white);
+  background: ${props => props.theme.colors.white};
   border-radius: 5px;
   box-shadow: 0 0 60px rgba(0, 0, 0, 0.05);
   padding: 1.5rem 2rem;
@@ -55,7 +55,7 @@ const Header = styled.header`
   font-weight: 600;
   font-size: 1.25rem;
   padding: 0 2rem 1.5rem;
-  border-bottom: 1px solid var(--gray-line);
+  border-bottom: 1px solid ${props => props.theme.colors.grayLine};
 `
 
 const Main = styled.main`
