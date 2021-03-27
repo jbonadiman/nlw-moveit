@@ -30,6 +30,10 @@ interface ChallengesProviderProps {
   challengesCompleted: number
 }
 
+function calculateExperience(level: number) {
+  return Math.pow(level * 4, 2)
+}
+
 export const ChallengesContext = createContext({} as ChallengesContextData)
 
 export function ChallengesProvider({
@@ -47,7 +51,7 @@ export function ChallengesProvider({
   const [activeChallenge, setActiveChallenge] = useState(null)
   const [isLevelUpModelOpen, setIsLevelUpModelOpen] = useState(false)
 
-  const experienceToNextLevel = Math.pow((level + 1) * 4, 2)
+  const experienceToNextLevel = calculateExperience(level + 1)
 
   useEffect(() => {
     Notification.requestPermission()

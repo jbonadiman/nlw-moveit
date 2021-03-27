@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { ChallengesContext } from '../contexts/ChallengeContext'
-import { isNumber } from 'util'
 
 const Bar = styled.header`
   display: flex;
