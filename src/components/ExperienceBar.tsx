@@ -15,6 +15,7 @@ const CurrentExperience = styled(Text)`
   position: absolute;
   top: 12px;
   transform: translateX(-50%);
+  left: 0;
 `
 
 const UnfilledProgress = styled.div`
@@ -27,6 +28,7 @@ const UnfilledProgress = styled.div`
 `
 
 const Progress = styled.div`
+  width: 0;
   height: 4px;
   border-radius: 4px;
   background: ${props => props.theme.colors.green};
