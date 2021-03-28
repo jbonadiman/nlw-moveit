@@ -10,7 +10,7 @@ import ChallengeBox from '../components/ChallengeBox'
 import Profile from '../components/Profile'
 
 import styles from '../styles/pages/Home.module.css'
-import { CountdownProvider } from '../contexts/CountdownContext'
+import CountdownProvider from '../contexts/CountdownContext'
 import { ChallengesProvider } from '../contexts/ChallengeContext'
 import { ThemeProvider } from 'styled-components'
 import lightTheme from '../styles/lightTheme'

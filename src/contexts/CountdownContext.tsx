@@ -25,7 +25,7 @@ export const CountdownContext = createContext({} as CountdownContextData)
 let countdownTimeout: NodeJS.Timeout
 const initialTime = Number(process.env.CYCLE_TIME_SEC)
 
-export function CountdownProvider({ children }: CountdownProviderProps) {
+const CountdownProvider: React.FC = ({ children }: CountdownProviderProps) => {
   const { startNewChallenge } = useContext(ChallengesContext)
 
   const [time, setTime] = useState(initialTime)
@@ -73,3 +73,5 @@ export function CountdownProvider({ children }: CountdownProviderProps) {
     </CountdownContext.Provider>
   )
 }
+
+export default CountdownProvider
