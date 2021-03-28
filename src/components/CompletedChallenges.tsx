@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { ChallengesContext } from '../contexts/ChallengeContext'
 
-const CompletedChallengesWrapper = styled.div`
+const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -12,15 +12,15 @@ const CompletedChallengesWrapper = styled.div`
   border-bottom: 1px solid #d7d8da;
 
   font-weight: 500;
-`
 
-const Text = styled.span`
-  &:first-child {
-    font-size: 1.25rem;
-  }
+  span {
+    &:first-child {
+      font-size: 1.25rem;
+    }
 
-  &:last-child {
-    font-size: 1.5rem;
+    &:last-child {
+      font-size: 1.5rem;
+    }
   }
 `
 
@@ -33,10 +33,10 @@ const CompletedChallenges: React.FC = () => {
   }
 
   return (
-    <CompletedChallengesWrapper>
-      <Text>Desafios completos</Text>
-      <Text>{parsedChallengesCount}</Text>
-    </CompletedChallengesWrapper>
+    <Wrapper>
+      <span>Desafios completos</span>
+      <span>{parsedChallengesCount}</span>
+    </Wrapper>
   )
 }
 

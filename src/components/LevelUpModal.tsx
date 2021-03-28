@@ -24,34 +24,34 @@ const Modal = styled.div`
   box-shadow: 0 0 60px rgba(0, 0, 0, 0.05);
   text-align: center;
   position: relative;
-`
 
-const Header = styled.header`
-  font-size: 8.75rem;
-  font-weight: 600;
-  color: ${props => props.theme.colors.blue};
-  background: url('/icons/levelup.svg') no-repeat center;
-  background-size: contain;
-`
+  header {
+    font-size: 8.75rem;
+    font-weight: 600;
+    color: ${props => props.theme.colors.blue};
+    background: url('/icons/levelup.svg') no-repeat center;
+    background-size: contain;
+  }
 
-const Title = styled.strong`
-  font-size: 2.25rem;
-  color: ${props => props.theme.colors.title};
-`
+  strong {
+    font-size: 2.25rem;
+    color: ${props => props.theme.colors.title};
+  }
 
-const Content = styled.p`
-  font-size: 1.25rem;
-  color: ${props => props.theme.colors.text};
-  margin-top: 0.25rem;
-`
+  p {
+    font-size: 1.25rem;
+    color: ${props => props.theme.colors.text};
+    margin-top: 0.25rem;
+  }
 
-const CloseButton = styled.button`
-  position: absolute;
-  right: 0.5rem;
-  top: 0.5rem;
-  background: transparent;
-  border: 0;
-  font-size: 0;
+  button {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+    background: transparent;
+    border: 0;
+    font-size: 0;
+  }
 `
 
 const LevelUpModal: React.FC = () => {
@@ -60,12 +60,12 @@ const LevelUpModal: React.FC = () => {
   return (
     <Overlay>
       <Modal>
-        <Header>{level}</Header>
-        <Title>Parabéns</Title>
-        <Content>Você alcançou um novo level.</Content>
-        <CloseButton type="button" onClick={closeLevelUpModal}>
+        <header>{level}</header>
+        <strong>Parabéns</strong>
+        <p>Você alcançou um novo level.</p>
+        <button type="button" onClick={closeLevelUpModal}>
           <img src="/icons/close.svg" alt="Fechar modal" />
-        </CloseButton>
+        </button>
       </Modal>
     </Overlay>
   )

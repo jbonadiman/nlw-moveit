@@ -8,9 +8,14 @@ const CountdownWrapper = styled.div`
   font-family: Rajdhani, serif;
   font-weight: 600;
   color: ${props => props.theme.colors.title};
+
+  span {
+    font-size: 6.25rem;
+    margin: 0 0.5rem;
+  }
 `
 
-const DigitsWrapper = styled(CountdownWrapper)`
+const Digits = styled(CountdownWrapper)`
   flex: 1;
 
   display: flex;
@@ -22,22 +27,15 @@ const DigitsWrapper = styled(CountdownWrapper)`
   border-radius: 5px;
   font-size: 8.5rem;
   text-align: center;
-`
 
-const Colon = styled.span`
-  font-size: 6.25rem;
-  margin: 0 0.5rem;
-`
+  span {
+    &:first-child {
+      border-right: 1px solid #f0f1f3;
+    }
 
-const Digit = styled.span`
-  flex: 1;
-
-  &:first-child {
-    border-right: 1px solid #f0f1f3;
-  }
-
-  &:last-child {
-    border-left: 1px solid #f0f1f3;
+    &:last-child {
+      border-left: 1px solid #f0f1f3;
+    }
   }
 `
 
@@ -58,12 +56,12 @@ const Button = styled.button`
   font-weight: 600;
 
   transition: background-color 0.2s;
-`
 
-const DisabledButton = styled(Button)`
-  background: ${props => props.theme.colors.white};
-  color: ${props => props.theme.colors.text};
-  cursor: not-allowed;
+  &:disabled {
+    background: ${props => props.theme.colors.white};
+    color: ${props => props.theme.colors.text};
+    cursor: not-allowed;
+  }
 `
 
 const StartCycleButton = styled(Button)`
@@ -101,19 +99,19 @@ const Countdown: React.FC = () => {
   return (
     <div>
       <CountdownWrapper>
-        <DigitsWrapper>
-          <Digit>{minuteLeft}</Digit>
-          <Digit>{minuteRight}</Digit>
-        </DigitsWrapper>
-        <Colon>:</Colon>
-        <DigitsWrapper>
-          <Digit>{secondLeft}</Digit>
-          <Digit>{secondRight}</Digit>
-        </DigitsWrapper>
+        <Digits>
+          <span>{minuteLeft}</span>
+          <span>{minuteRight}</span>
+        </Digits>
+        <span>:</span>
+        <Digits>
+          <span>{secondLeft}</span>
+          <span>{secondRight}</span>
+        </Digits>
       </CountdownWrapper>
 
       {hasFinished ? (
-        <DisabledButton> Ciclo encerrado</DisabledButton>
+        <Button disabled> Ciclo encerrado</Button>
       ) : (
         <>
           {isActive ? (

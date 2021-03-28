@@ -36,10 +36,10 @@ function calculateExperience(level: number) {
 
 export const ChallengesContext = createContext({} as ChallengesContextData)
 
-export function ChallengesProvider({
+export const ChallengesProvider = ({
   children,
   ...rest
-}: ChallengesProviderProps) {
+}: ChallengesProviderProps) => {
   const [level, setLevel] = useState(rest.level ?? 1)
   const [currentExperience, setCurrentExperience] = useState(
     rest.currentExperience ?? 0

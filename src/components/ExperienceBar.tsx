@@ -5,33 +5,35 @@ import { ChallengesContext } from '../contexts/ChallengeContext'
 const Bar = styled.header`
   display: flex;
   align-items: center;
+
+  span {
+    font-size: 1rem;
+  }
 `
 
-const Text = styled.span`
-  font-size: 1rem;
-`
-
-const CurrentExperience = styled(Text)`
-  position: absolute;
-  top: 12px;
-  transform: translateX(-50%);
-  left: 0;
-`
-
-const UnfilledProgress = styled.div`
+const Progress = styled.div`
   flex: 1;
   height: 4px;
   border-radius: 4px;
   background: ${props => props.theme.colors.grayLine};
   margin: 0 1.5rem;
   position: relative;
-`
 
-const Progress = styled.div`
-  width: 0;
-  height: 4px;
-  border-radius: 4px;
-  background: ${props => props.theme.colors.green};
+  span {
+    font-size: 1rem;
+
+    position: absolute;
+    top: 12px;
+    transform: translateX(-50%);
+    left: 0;
+  }
+
+  div {
+    width: 0;
+    height: 4px;
+    border-radius: 4px;
+    background: ${props => props.theme.colors.green};
+  }
 `
 
 const ExperienceBar: React.FC = () => {
@@ -50,14 +52,14 @@ const ExperienceBar: React.FC = () => {
 
   return (
     <Bar>
-      <Text>0 xp</Text>
-      <UnfilledProgress>
-        <Progress style={{ width: `${percentToNextLevel}%` }} />
-        <CurrentExperience style={{ left: `${percentToNextLevel}%` }}>
+      <span>0 xp</span>
+      <Progress>
+        <div style={{ width: `${percentToNextLevel}%` }} />
+        <span style={{ left: `${percentToNextLevel}%` }}>
           {currentExperience} xp
-        </CurrentExperience>
-      </UnfilledProgress>
-      <Text>{experienceToNextLevel} xp</Text>
+        </span>
+      </Progress>
+      <span>{experienceToNextLevel} xp</span>
     </Bar>
   )
 }

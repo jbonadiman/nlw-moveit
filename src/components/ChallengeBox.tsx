@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { ChallengesContext } from '../contexts/ChallengeContext'
 import { CountdownContext } from '../contexts/CountdownContext'
 
-const ChallengeWrapper = styled.div`
+const Wrapper = styled.div`
   height: 100%;
 
   background: ${props => props.theme.colors.white};
@@ -19,68 +19,68 @@ const ChallengeWrapper = styled.div`
   text-align: center;
 `
 
-const InactiveTitle = styled.strong`
-  font-size: 1.5rem;
-  font-weight: 500;
-  line-height: 1.4;
-`
-
-const InactiveDescription = styled.p`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  line-height: 1.4;
-  max-width: 70%;
-  margin-top: 3rem;
-`
-
-const LevelUpLogo = styled.img`
-  margin-bottom: 1rem;
-`
-
 const ActiveChallenge = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
+
+  header {
+    color: ${props => props.theme.colors.blue};
+    font-weight: 600;
+    font-size: 1.25rem;
+    padding: 0 2rem 1.5rem;
+    border-bottom: 1px solid ${props => props.theme.colors.grayLine};
+  }
+
+  main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  strong {
+    font-size: 2rem;
+    font-weight: 600;
+    color: ${props => props.theme.colors.title};
+    margin: 1.5rem 0 1rem;
+  }
+
+  p {
+    line-height: 1.5;
+  }
+
+  footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
 `
 
 const InactiveChallenge = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`
 
-const Header = styled.header`
-  color: ${props => props.theme.colors.blue};
-  font-weight: 600;
-  font-size: 1.25rem;
-  padding: 0 2rem 1.5rem;
-  border-bottom: 1px solid ${props => props.theme.colors.grayLine};
-`
+  strong {
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.4;
+  }
 
-const Main = styled.main`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`
+  p {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.4;
+    max-width: 70%;
+    margin-top: 3rem;
+  }
 
-const ChallengeTitle = styled.strong`
-  font-size: 2rem;
-  font-weight: 600;
-  color: ${props => props.theme.colors.title};
-  margin: 1.5rem 0 1rem;
-`
-
-const ChallengeDescription = styled.p`
-  line-height: 1.5;
-`
-
-const Footer = styled.footer`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  img {
+    margin-bottom: 1rem;
+  }
 `
 
 const Button = styled.button`
@@ -123,21 +123,19 @@ const ChallengeBox: React.FC = () => {
   }
 
   return (
-    <ChallengeWrapper>
+    <Wrapper>
       {activeChallenge ? (
         <ActiveChallenge>
-          <Header>Ganhe {activeChallenge.amount} xp</Header>
-          <Main>
+          <header>Ganhe {activeChallenge.amount} xp</header>
+          <main>
             <img
               src={`icons/${activeChallenge.type}.svg`}
               alt="Tipo de desafio"
             />
-            <ChallengeTitle>Novo desafio</ChallengeTitle>
-            <ChallengeDescription>
-              {activeChallenge.description}
-            </ChallengeDescription>
-          </Main>
-          <Footer>
+            <strong>Novo desafio</strong>
+            <p>{activeChallenge.description}</p>
+          </main>
+          <footer>
             <Button type="button" onClick={handleChallengeFailed} color="red">
               Falhei
             </Button>
@@ -148,20 +146,18 @@ const ChallengeBox: React.FC = () => {
             >
               Completei
             </Button>
-          </Footer>
+          </footer>
         </ActiveChallenge>
       ) : (
         <InactiveChallenge>
-          <InactiveTitle>
-            Finalize um ciclo para receber um desafio{' '}
-          </InactiveTitle>
-          <InactiveDescription>
-            <LevelUpLogo src="icons/level-up.svg" alt="Level Up" />
+          <strong>Finalize um ciclo para receber um desafio </strong>
+          <p>
+            <img src="icons/level-up.svg" alt="Level Up" />
             Avance de level completando desafios
-          </InactiveDescription>
+          </p>
         </InactiveChallenge>
       )}
-    </ChallengeWrapper>
+    </Wrapper>
   )
 }
 
