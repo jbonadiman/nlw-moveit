@@ -5,7 +5,7 @@ import { AppProps } from 'next/app'
 import { ThemeProvider } from 'styled-components'
 import lightTheme from '../styles/lightTheme'
 
-export const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
+const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <ThemeProvider theme={lightTheme}>
       <Component {...pageProps} />
@@ -13,3 +13,5 @@ export const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
     </ThemeProvider>
   )
 }
+
+export default MyApp

@@ -7,12 +7,6 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
 
-  img {
-    width: 5.5rem;
-    height: 5.5rem;
-    border-radius: 50%;
-  }
-
   div {
     margin-left: 1.5rem;
   }
@@ -33,12 +27,21 @@ const Wrapper = styled.div`
   }
 `
 
+const Avatar = styled.img`
+  width: 5.5rem;
+  height: 5.5rem;
+  border-radius: 50%;
+`
+
 const Profile: React.FC = () => {
   const { level } = useContext(ChallengesContext)
 
   return (
     <Wrapper>
-      <img src="https://github.com/jbonadiman.png" alt="João Vitor Bonadiman" />
+      <Avatar
+        src="https://github.com/jbonadiman.png"
+        alt="João Vitor Bonadiman"
+      />
       <div>
         <strong>João Vitor Bonadiman</strong>
         <p>
