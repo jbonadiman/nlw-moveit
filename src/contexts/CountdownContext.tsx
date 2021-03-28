@@ -23,8 +23,7 @@ interface CountdownProviderProps {
 export const CountdownContext = createContext({} as CountdownContextData)
 
 let countdownTimeout: NodeJS.Timeout
-console.log(process.env)
-const initialTime = Number(process.env.CYCLE_TIME_SEC)
+const initialTime = 25 * 60
 
 const CountdownProvider: React.FC = ({ children }: CountdownProviderProps) => {
   const { startNewChallenge } = useContext(ChallengesContext)
