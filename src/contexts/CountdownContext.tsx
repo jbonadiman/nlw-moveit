@@ -23,7 +23,7 @@ interface CountdownProviderProps {
 export const CountdownContext = createContext({} as CountdownContextData)
 
 let countdownTimeout: NodeJS.Timeout
-const initialTime = 10
+const initialTime = Number(process.env.CYCLE_TIME_SEC)
 
 export function CountdownProvider({ children }: CountdownProviderProps) {
   const { startNewChallenge } = useContext(ChallengesContext)
