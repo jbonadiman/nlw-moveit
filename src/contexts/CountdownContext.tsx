@@ -23,6 +23,7 @@ interface CountdownProviderProps {
 export const CountdownContext = createContext({} as CountdownContextData)
 
 let countdownTimeout: NodeJS.Timeout
+console.log(process.env)
 const initialTime = Number(process.env.CYCLE_TIME_SEC)
 
 const CountdownProvider: React.FC = ({ children }: CountdownProviderProps) => {
